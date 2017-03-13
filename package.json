@@ -1,0 +1,11 @@
+{
+  "name": "socket-io",
+  "version": "1.0.0",
+  "description": "A socket io Node project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akin Sowemimo",
+  "license": "MIT"
+}
