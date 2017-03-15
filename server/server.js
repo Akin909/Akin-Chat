@@ -6,13 +6,10 @@ var app = express();
 
 console.log(publicPath);
 app.use(express.static(publicPath));
-  
+
 app.get('/', function(req, res) {
   res.send();
 });
-
-
-
 
 app.listen(port, function() {
   console.log('App server listening on port %d', port);
