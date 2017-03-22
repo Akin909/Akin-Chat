@@ -8,9 +8,9 @@ const publicPath = path.join(__dirname, '../public');
 const socketIO = require('socket.io');
 const http = require('http');
 
-var app = express();
-var server = http.createServer(app);
-var io = socketIO(server);
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 
 app.use(express.static(publicPath));
 
@@ -23,6 +23,8 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });
+
+
   socket.emit('newEmail', {
     from: 'mike@example.com',
     text: 'Hey, what is going on.',
