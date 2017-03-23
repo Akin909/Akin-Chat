@@ -26,21 +26,21 @@ io.on('connection', (socket) => {
 
 
   socket.emit('newEmail', {
-    from: 'mike@example.com',
-    text: 'Hey, what is going on.',
+    from:      'mike@example.com',
+    text:      'Hey, what is going on.',
     createdAt: 123
   });
 
   socket.emit('newMessage', {
-    from:'simon',
-    text:'Still hungover buddy',
-    createdAt:`${Date.now()}`
+    from:      'simon',
+    text:      'Still hungover buddy',
+    createdAt: `${Date.now()}`
   });
 
   socket.on('createMessage', (newMessage) => {
     io.emit('newMessage',{
-      from: newMessage.from,
-      text: newMessage.text,
+      from:      newMessage.from,
+      text:      newMessage.text,
       createdAt: new Date().getTime()
     });
 
