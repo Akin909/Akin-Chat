@@ -5,12 +5,11 @@ var socket = io();
 socket.on('connect', function() {
   console.log('connected to the server');
 
-  socket.emit('createMessage', {
-    from:'Akin',
-    text:'We hate you please DIE',
-    createdAt:Date.now()
-  });
-
+  //socket.emit('createMessage', {
+  //from:'Akin',
+  //text:'We hate you please DIE',
+  //createdAt:Date.now()
+  //});
 });
 
 socket.on('disconnect', function() {
