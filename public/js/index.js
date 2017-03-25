@@ -19,6 +19,10 @@ socket.on('newMessage', function(message) {
   appendToDOM(messageList,renderToDom,message);
 });
 
+socket.on('newLocationMessage', function(message) { 
+  const messageList = document.querySelector('.message__list');
+  appendToDOM(messageList,renderToDom,message);
+});
 
 (function() {
   const messageForm = document.querySelector('#message-form');
@@ -27,7 +31,6 @@ socket.on('newMessage', function(message) {
 
   sendLocation.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log('button works');
     if (!navigator.geolocation) {
       return alert('Oh no you can\'t do cool geolocation stuff..😩');
     }
@@ -55,20 +58,27 @@ socket.on('newMessage', function(message) {
 }());
 
 function renderToDom(message) {
+  if (message.text) {
   return `
   <li class="message__item">
   <p class="message__body">${message.from}: ${message.text}</p>
   <p class="message__created-at">Sent at: ${message.createdAt || 'Time Stamp'}</p>
   </li>
   `;
-
+  } else if (message.url){
+  return `
+  <li class="message__item__location message__item">
+  <span>${message.from}: <a target="_blank" href="${message.url}">My Current Location</a></span>
+  <p class="location__created-at">Sent at: ${message.createdAt || 'Time Stamp'}</p>
+  </li>
+  `;
+  }
 }
 
 function appendToDOM(parent,child,message) {
   if (typeof child === 'function' && message) {
     let renderedChild = child(message);
     parent.innerHTML += renderedChild;
-    console.log(parent.childElementCount);
   } else if (parent && child){
     parent.appendChild(child);
   }

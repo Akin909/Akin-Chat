@@ -1,6 +1,18 @@
-const generateMessage = (from,text) => {
+const mapsEndpoint = 'https://www.google.co.uk/maps?q=';
 let untidyDate = new Date().toISOString();
 let cleanDate = tidyDate(untidyDate);
+
+
+const generateLocationMessage = (from,lat,lon) => {
+  return {
+    from: from,
+    url: `${ mapsEndpoint }${ lat },${ lon }`,
+    createdAt:cleanDate
+  };
+};
+
+
+const generateMessage = (from,text) => {
   return {
     from: from,
     text: text,
@@ -17,4 +29,4 @@ function tidyDate(dateString) {
 
   return dateString.split('T').join(' @ ').split('.')[0];
 }
-module.exports = {generateMessage};
+module.exports = { generateMessage,generateLocationMessage };

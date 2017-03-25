@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width">
 
     <title>Akin's Node App</title>
-    <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline|Lato"
-    rel="stylesheet">
+    <link href=
+    "https://fonts.googleapis.com/css?family=Amatic+SC|Lato|Open+Sans" rel=
+    "stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css" media="screen"
     title="no title" charset="utf-8">
 </head>
@@ -21,22 +22,20 @@
 
     <section class="chat__container">
         <header>
-            <p class="title">Welcome to the Chat app</p>
+            <p class="text__title">Welcome to Akin Chat</p>
         </header>
 
-        <ol class="message__list"></ol>
 
+        <ol class="message__list">
+        </ol>
+        <button class="submit__button submit__button__location" id=
+        "send-location">Send Location</button>
 
-        <form id="message-form" name=
-        "message-form">
-            <input type="text" name="message" id="message-input" class=
-            "message__input" placeholder=
-            "type in your interesting message..."> 
-
+        <form class="message__form" id="message-form" name="message-form">
             <!-- <textarea class="message__field" rows="10" cols="50"></textarea> -->
-        <button class="submit__button">Send</button>
+            <button class="submit__button">Send</button> 
+            <input type="text" name="message" id="message-input" class="message__input" placeholder="type in your interesting message...">
         </form>
-        <button class="submit__button submit__button__location" id="send-location">Send Location</button>
     </section>
     <script src="/socket.io/socket.io.js" charset="utf-8"></script> 
     <script src="./js/index.js" charset="utf-8"></script>
