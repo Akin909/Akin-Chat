@@ -1,5 +1,5 @@
 const expect = require('expect');
-const {generateMessage} = require('./message.js');
+const { generateLocationMessage,generateMessage,mapsEndpoint } = require('./message.js');
 
 describe('generateMessage', () => {
   it('it should generate correct object', (done) => {
@@ -16,7 +16,25 @@ describe('generateMessage', () => {
       text
     });
     //assert createdAt is number
-    expect(actual.createdAt).toBeA('number');
+    expect(actual.createdAt).toBeA('string');
     done();
   });
+});
+
+describe('generateLocationMessage', () => {
+  it('should generate correct location object', () => {
+    const lat = 'fakelat';
+    const lon = 'fakelon';
+    const user = 'FakeUser';
+    const actual = generateLocationMessage(user,lat,lon);
+    let expected = `${mapsEndpoint}${lat},${lon}`;
+
+    expect(actual.url).toBe(expected);
+    expect(actual).toInclude({
+      from: user,
+      url:expected
+    });
+  });
+
+
 });

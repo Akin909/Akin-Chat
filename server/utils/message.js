@@ -29,4 +29,4 @@ function tidyDate(dateString) {
 
   return dateString.split('T').join(' @ ').split('.')[0];
 }
-module.exports = { generateMessage,generateLocationMessage };
+module.exports = { generateMessage,generateLocationMessage,mapsEndpoint };
