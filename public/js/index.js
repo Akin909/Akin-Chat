@@ -19,7 +19,7 @@ socket.on('newMessage', function(message) {
   appendToDOM(messageList,renderToDom,message);
 });
 
-socket.on('newLocationMessage', function(message) { 
+socket.on('newLocationMessage', function(message) {
   const messageList = document.querySelector('.message__list');
   appendToDOM(messageList,renderToDom,message);
 });
@@ -59,19 +59,28 @@ socket.on('newLocationMessage', function(message) {
 
 function renderToDom(message) {
   if (message.text) {
-  return `
-  <li class="message__item">
-  <p class="message__body">${message.from}: ${message.text}</p>
-  <p class="message__created-at">Sent at: ${message.createdAt || 'Time Stamp'}</p>
-  </li>
-  `;
+    return `
+    <li class="message__item">
+      <p class="message__body">
+        <span><span class="text__span">${message.from}: </span>
+        ${message.text}</span>
+        <span><span class="text__span">Sent at: </span>${message.createdAt || 'Time Stamp'}
+        </span>
+      </p>
+    </li>
+    `;
   } else if (message.url){
-  return `
-  <li class="message__item__location message__item">
-  <span>${message.from}: <a target="_blank" href="${message.url}">My Current Location</a></span>
-  <p class="location__created-at">Sent at: ${message.createdAt || 'Time Stamp'}</p>
-  </li>
-  `;
+    return `
+    <li class="message__item__location message__item">
+      <p class="message__body">
+        <span><span class="text__span">${message.from}: </span>
+          <a class="text__link" target="_blank" href="${message.url}">My Current Location</a>
+        </span>
+        <span><span class="text__span">Sent at: </span>${message.createdAt || 'Time Stamp'}
+        </span>
+      </p>
+    </li>
+    `;
   }
 }
 

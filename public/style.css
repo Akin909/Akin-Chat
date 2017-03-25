@@ -17,8 +17,9 @@ body {
     padding: none;
     margin: 0;
 }
-.message__from {
-
+.message__body {
+    display: flex;
+    justify-content: space-between;
 }
 
 .chat__container {
@@ -46,6 +47,10 @@ body {
     background-color:#FE4A49;
 }
 
+.text__span {
+    font-weight: 700;
+    color:blue;
+}
 .text__title {
     margin:0;
     font-size: 2rem;
