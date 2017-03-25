@@ -50,9 +50,8 @@ socket.on('newLocationMessage', function(message) {
     socket.emit('createMessage', {
       from: 'User',
       text: messageInput.value
-    }, function(message) {
-      console.log(message);
-      // event.target.value = '';
+    }, function(){
+      messageInput.value = '';
     });
   });
 }());
