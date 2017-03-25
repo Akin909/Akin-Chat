@@ -31,7 +31,7 @@ socket.on('newMessage', function(message) {
       text: messageInput.value
     }, function() {
       console.log('received message');
-      event.target.value = '';
+      // event.target.value = '';
     });
   });
 }());
