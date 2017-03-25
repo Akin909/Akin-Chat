@@ -22,7 +22,20 @@ socket.emit('createMessage',{
   console.log(data);
 });
 
-
+(function() {
+  const messageForm = document.querySelector('#message-form');
+  const messageInput = document.querySelector('#message-input');
+  messageForm.addEventListener('submit',function(event) { 
+    event.preventDefault(); 
+    
+    socket.emit('createMessage', {
+      from: 'User',
+      text: messageInput.value
+    }, function() { 
+      console.log('received message');
+    });
+  });
+}());
 
 function renderToDom(message) {
   let messageFrom  = document.querySelector('.from');
