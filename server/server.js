@@ -20,22 +20,26 @@ io.on('connection', (socket) => {
 
   console.log('New user connected');
 
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
-  });
-
-
  socket.emit('newMessage', generateMessage('Admin','Welcome to the chat app'));
+
 
  socket.broadcast.emit('newMessage', generateMessage('Admin','New user joined'));
   
   socket.on('createMessage', (newMessage, callback) => {
 
     io.emit('newMessage',generateMessage(newMessage.from, newMessage.text));
-    socket.broadcast.emit('newMessage', generateMessage(newMessage.from, newMessage.text));
     callback('This is from the server');
   });
+
+socket.on('createLocationMessage', (coords) => {
+  io.emit('newMessage',generateMessage('Admin',`${coords.latitude}, ${coords.longitude}`));
+});
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+
+
 });
 
 app.get('/', function(req, res) {

@@ -23,6 +23,24 @@ socket.on('newMessage', function(message) {
 (function() {
   const messageForm = document.querySelector('#message-form');
   const messageInput = document.querySelector('#message-input');
+  const sendLocation = document.querySelector('#send-location');
+
+  sendLocation.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('button works');
+    if (!navigator.geolocation) {
+      return alert('Oh no you can\'t do cool geolocation stuff..😩');
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      socket.emit('createLocationMessage',{
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    }, () => {
+      alert('Dude things are not going well... FML!');
+    });
+  });
   messageForm.addEventListener('submit',function(event) {
     event.preventDefault();
 
