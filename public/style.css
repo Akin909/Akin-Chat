@@ -24,11 +24,11 @@ body {
 
 .chat__container {
     background-color:#FED766;
-    padding: 0.3rem;
+    /* padding: 0.3rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: space-between;
     width: 80%;
     height: 100%;
 }
@@ -47,6 +47,12 @@ body {
     background-color:#FE4A49;
 }
 
+.menu__title {
+    padding-left:1rem;
+    color: white;
+}
+
+
 .text__span {
     font-weight: 700;
     color:blue;
@@ -60,9 +66,11 @@ body {
 
 .message__form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color:#006675;
     align-items: center;
     width: 100%;
+    height:10%;
 }
 
 .message__field {
@@ -73,14 +81,14 @@ body {
 
 
 .message__list {
-    min-height:50%;
-    box-shadow: -2px 3px 0 #999999;
+    min-height:80%;
+    /* box-shadow: -2px 3px 0 #999999; */
     margin: 0;
     padding: 0.5rem;
     background-color:#F6F4F3;
-    margin: 0.2rem;
     width: 100%;
 }
+
 .message__item {
     list-style-type:none;
 
@@ -88,21 +96,23 @@ body {
 
 .message__input {
     background-color:#E6E6EA;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     border:none;
     font-family: 'Lato',sans-serif;
-    padding: 0.3rem;
-    width:100%;
-    height:5rem
+    padding: 0.5rem;
+    width:80%;
+    height:100%;
+    font-size:1.3em;
 }
 .submit__button {
     font-family: 'Lato',sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: #009FB7;
     border:none;
-    width: 8rem;
-    margin:1rem
+    /* margin:0.3rem; */
+    margin: 0 0.3rem 0 0.4rem;
 }
 
 .submit__button__location {
+    width: 10rem;
 }
