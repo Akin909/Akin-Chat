@@ -29,8 +29,8 @@ socket.on('newMessage', function(message) {
     socket.emit('createMessage', {
       from: 'User',
       text: messageInput.value
-    }, function() {
-      console.log('received message');
+    }, function(message) {
+      console.log(message);
       // event.target.value = '';
     });
   });
