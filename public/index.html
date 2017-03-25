@@ -14,26 +14,29 @@
 
 <body>
     <section class="menu__container">
-        <div class="menu__top"></div>
+        <div class="menu__top">
+        </div>
     </section>
+
+
     <section class="chat__container">
         <header>
             <p class="title">Welcome to the Chat app</p>
         </header>
 
 
-        <form id="message-form" action="post" method="post">
-            <input type="text" name="message" id="message-input" class="message__input" placeholder="type in your interesting message..."/>
-            <textarea  class="message__field" rows="10" cols="50"></textarea>
+        <ol class="message__list"></ol>
+
+
+        <form id="message-form" action="post" method="post" name=
+        "message-form">
+            <input type="text" name="message" id="message-input" class=
+            "message__input" placeholder=
+            "type in your interesting message..."> 
+
+            <textarea class="message__field" rows="10" cols="50"></textarea>
+        <button class="submit__button">Send</button>
         </form>
-<button class="submit__button">Send</button>
-        <div class="message">
-            <p class="from"></p>
-
-            <p class="body"></p>
-
-            <p class="created-at"></p>
-        </div>
     </section>
     <script src="/socket.io/socket.io.js" charset="utf-8"></script> 
     <script src="./js/index.js" charset="utf-8"></script>

@@ -11,42 +11,50 @@ socket.on('disconnect', function() {
 });
 
 socket.on('newMessage', function(message) {
-  console.log('New message', message);
-  renderToDom(message);
+  const messageList = document.querySelector('.message__list');
+  // If the number of rendered messages is > 5 clear messages
+  if (messageList.childElementCount >= 5) {
+    messageList.innerHTML = '';
+  }
+  appendToDOM(messageList,renderToDom,message);
 });
 
-socket.emit('createMessage',{
-  from: 'John',
-  text: 'Hi, How you doing'
-},function(data) {
-  console.log(data);
-});
 
 (function() {
   const messageForm = document.querySelector('#message-form');
   const messageInput = document.querySelector('#message-input');
-  messageForm.addEventListener('submit',function(event) { 
-    event.preventDefault(); 
-    
+  messageForm.addEventListener('submit',function(event) {
+    event.preventDefault();
+
     socket.emit('createMessage', {
       from: 'User',
       text: messageInput.value
-    }, function() { 
+    }, function() {
       console.log('received message');
+      event.target.value = '';
     });
   });
 }());
 
 function renderToDom(message) {
-  let messageFrom  = document.querySelector('.from');
-  let messageText  = document.querySelector('.body');
-  let messageTime  = document.querySelector('.created-at');
-  messageFrom.innerHTML = '';
-  messageText.innerHTML = '';
-  messageTime.innerHTML = '';
+  return `
+  <li class="message__item">
+  <p class="message__body">${message.from}: ${message.text}</p>
+  <p class="message__created-at">Sent at: ${message.createdAt || 'Time Stamp'}</p>
+  </li>
+  `;
 
-  messageFrom.innerHTML = 'From: ' + message.from;
-  messageText.innerHTML = 'Message: ' + message.text;
-  messageTime.innerHTML = 'Created at: ' + message.createdAt || 'Time stamp';
+}
 
+function appendToDOM(parent,child,message) {
+  if (typeof child === 'function' && message) {
+    let renderedChild = child(message);
+    parent.innerHTML += renderedChild;
+    console.log(parent.childElementCount);
+  } else if (parent && child){
+    parent.appendChild(child);
+  }
+  else {
+    return 'You must input a parent and a child';
+  }
 }

@@ -2,7 +2,6 @@
     box-sizing: border-box;
 }
 body {
-    background-color: skyBlue;
     font-family: 'Lato',sans-serif;
     display: flex;
     flex-direction: row;
@@ -11,12 +10,13 @@ body {
     padding: none;
     margin: 0;
 }
-.from {
+.message__from {
 
 }
 
 .chat__container {
-    margin: 1rem;
+    background-color:#276FBF;
+    padding-left: 0.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,11 +26,10 @@ body {
 }
 
 .menu__container {
-    border: solid 1px black;
+    /* border: solid 1px black; */
     width: 20%;
     height:100%;
-    background-color:#008040
-
+    background-color:#183059;
 }
 
 .title {
@@ -50,6 +49,19 @@ body {
 .class {
     border: none;
 }
+
+.message__list {
+    margin: 0;
+    padding: 0.5rem;
+    background-color:#F6F4F3;
+    margin: 0.2rem;
+    width: 100%;
+}
+.message__item {
+    list-style-type:none;
+
+}
+
 .message__input {
     margin-bottom: 1rem;
     border:none;
