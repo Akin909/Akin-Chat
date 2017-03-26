@@ -7,23 +7,31 @@
 
         <title>Akin's Node App</title>
         <link href=
-        "https://fonts.googleapis.com/css?family=Amatic+SC|Lato|Open+Sans" rel=
+        "https://fonts.googleapis.com/css?family=Amatic+SC|Roboto|Open+Sans" rel=
         "stylesheet">
         <link rel="stylesheet" href="style.css" type="text/css" media="screen"
-        title="no title" charset="utf-8">
+        title="Akin Chat" charset="utf-8">
     </head>
 
     <body>
         <section class="menu__container">
             <div class="menu__top">
+                <a href="#menu" class="box-shadow-menu"></a>
                 <h3 class="menu__title">People</h3>
             </div>
-            <div class="menu__users"></div>
+
+
+            <div class="menu__users">
+            </div>
         </section>
 
 
         <section class="chat__container">
             <header class="title__container">
+                <div class="menu__icon">                
+                <a href="#menu" class="menu__active box-shadow-menu"></a>
+                    <!-- &#38;#10006; -->
+                </div>
                 <p class="text__title">Welcome to Akin Chat</p>
                 <img class="img img__cat" src="./img/cat-icon.png" alt=
                 "Cartoon cat image">
@@ -33,11 +41,14 @@
             <ol class="message__list">
             </ol>
 
+
             <form class="message__form" id="message-form" name="message-form">
-                <input type="text" name="message" id="message-input" class="message__input" placeholder="Type in your interesting message...">
-                <button class="submit__button">Send</button> 
-                <button class="submit__button submit__button__location" id=
-                    "send-location">Send Location</button>
+                <input autofocus="" autocomplete="off" type="text" name="message"
+                id="message-input" class="message__input" placeholder=
+                "Type in your interesting message..."> <button class=
+                    "submit__button">Send</button> <button class=
+                    "submit__button submit__button__location" id="send-location">Send
+                    Location</button>
             </form>
         </section>
         <script src="/socket.io/socket.io.js" charset="utf-8"></script> 

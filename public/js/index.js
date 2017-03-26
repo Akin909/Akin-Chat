@@ -25,11 +25,28 @@ socket.on('newLocationMessage', function(message) {
 });
 
 (function() {
-  const messageForm = document.querySelector('#message-form');
   const messageInput = document.querySelector('#message-input');
-  const sendLocation = document.querySelector('#send-location');
+  const menuContainer = document.querySelector('.menu__container');
 
-  sendLocation.addEventListener('click', (event) => {
+
+  getElement( '.box-shadow-menu' ).addEventListener('click',function() { 
+    // console.log('Menu toggle');
+    
+    getElement('.menu__icon').classList.toggle( 'menu__icon__active' );
+    menuContainer.style.display = 'none'; 
+    getComputedStyle(menuContainer).display;
+    getElement('.chat__container').style.width = '100vw';
+
+  });
+  getElement('.menu__icon').addEventListener('click', (event) => {
+
+    menuContainer.style.display = 'flex'; 
+    getElement('.menu__icon').classList.remove('menu__icon__active');
+
+  });
+
+  getElement('#send-location').addEventListener('click', (event) => {
+
     event.preventDefault();
     if (!navigator.geolocation) {
       return alert('Oh no you can\'t do cool geolocation stuff..😩');
@@ -39,21 +56,29 @@ socket.on('newLocationMessage', function(message) {
       socket.emit('createLocationMessage',{
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
+
       });
     }, () => {
+
       alert('Dude things are not going well... FML!');
+
     });
   });
-  messageForm.addEventListener('submit',function(event) {
-    event.preventDefault();
+  getElement('#message-form').addEventListener('submit',function(event) {
 
+    event.preventDefault();
+    //The line below stops empty input from being sent via socketIO
+    if (messageInput.value.length < 1) { return ; }
     socket.emit('createMessage', {
       from: 'User',
       text: messageInput.value
     }, function(){
+
       messageInput.value = '';
+
     });
   });
+
 }());
 
 function renderToDom(message) {
@@ -93,4 +118,8 @@ function appendToDOM(parent,child,message) {
   else {
     return 'You must input a parent and a child';
   }
+}
+
+function getElement(selector) {
+  return document.querySelector(selector);
 }
