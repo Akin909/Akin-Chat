@@ -90,7 +90,7 @@ body {
     width: 20%;
     height:100%;
     background-color:#FE4A49;
-    transition: left 1.5s ease-in;
+    transition: display 1.5s ease-in;
 }
 .menu__top {
     display:flex;
@@ -128,18 +128,18 @@ body {
 .message__field {
     border: 0px solid black;
     box-shadow: -4px 5px 0 black;
-    font-family: 'Lato',sans-serif;
+    font-family: 'Roboto',sans-serif;
 }
 
 
 .message__list {
     min-height:80%;
-    /* margin: 0; */
     margin-bottom:0.3rem;
     /* box-shadow: -2px 3px 0 #999999; */
     padding: 0.5rem;
     background-color:#F6F4F3;
     width: 100%;
+    font-family:'Raleway', sans-serif;
 }
 
 .message__item {

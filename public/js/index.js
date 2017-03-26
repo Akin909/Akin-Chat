@@ -34,14 +34,14 @@ socket.on('newLocationMessage', function(message) {
     
     getElement('.menu__icon').classList.toggle( 'menu__icon__active' );
     menuContainer.style.display = 'none'; 
-    getComputedStyle(menuContainer).display;
-    getElement('.chat__container').style.width = '100vw';
+    getElement('.chat__container').style.width = '100%';
 
   });
   getElement('.menu__icon').addEventListener('click', (event) => {
 
-    menuContainer.style.display = 'flex'; 
+    getComputedStyle(menuContainer).display;
     getElement('.menu__icon').classList.remove('menu__icon__active');
+    menuContainer.style.display = 'flex'; 
 
   });
 
