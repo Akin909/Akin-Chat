@@ -13,9 +13,9 @@ socket.on('disconnect', function() {
 socket.on('newMessage', function(message) {
   const messageList = document.querySelector('.message__list');
   // If the number of rendered messages is > 5 clear messages
-  if (messageList.childElementCount >= 5) {
-    messageList.innerHTML = '';
-  }
+  // if (messageList.childElementCount >= 5) {
+  //   messageList.innerHTML = '';
+  // }
   appendToDOM(messageList,renderToDom,message);
 });
 
@@ -94,10 +94,11 @@ function renderToDom(message) {
     return `
     <li class="message__item">
       <p class="message__body">
-        <span><span class="text__span">${message.from}: </span>
-        ${message.text}</span>
-        <span><span class="text__span">Sent at: </span>${message.createdAt || 'Time Stamp'}
-        </span>
+      <span>${message.text}</span>
+      <span class="text__span__container">
+        <span class="text__span__user">${message.from}</span>
+        <span class="text__span__time">${message.createdAt || 'Time Stamp'}</span>
+      </span>
       </p>
     </li>
     `;
@@ -105,10 +106,10 @@ function renderToDom(message) {
     return `
     <li class="message__item__location message__item">
       <p class="message__body">
-        <span><span class="text__span">${message.from}: </span>
-          <a class="text__link" target="_blank" href="${message.url}">My Current Location</a>
-        </span>
-        <span><span class="text__span">Sent at: </span>${message.createdAt || 'Time Stamp'}
+        <a class="text__link" target="_blank" href="${message.url}">My Current Location</a>
+        <span class="text__span__container">
+          <span class="text__span__user">${message.from}: </span>
+          <span class="text__span__time"> ${message.createdAt || 'Time Stamp'} </span>
         </span>
       </p>
     </li>

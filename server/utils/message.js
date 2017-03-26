@@ -27,6 +27,8 @@ const generateMessage = (from,text) => {
     createdAt:cleanDate
   };
 };
+
+
 /**
  * Takes a date string and formats it
  *
