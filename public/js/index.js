@@ -1,7 +1,7 @@
 //*********************************
-  //Client
-  //*********************************
-  var socket = io();
+ //Client
+ //*********************************
+var socket = io();
 socket.on('connect', function() {
   console.log('connected to the server');
 });
@@ -27,10 +27,10 @@ socket.on('newLocationMessage', function(message) {
 (function() {
   const messageInput = document.querySelector('#message-input');
   const menuContainer = document.querySelector('.menu__container');
+  const locationButton = document.querySelector('#send-location');
 
 
-  getElement( '.box-shadow-menu' ).addEventListener('click',function() { 
-    // console.log('Menu toggle');
+  getElement('.box-shadow-menu').addEventListener('click',function() { 
     
     getElement('.menu__icon').classList.toggle( 'menu__icon__active' );
     menuContainer.style.display = 'none'; 
@@ -51,8 +51,15 @@ socket.on('newLocationMessage', function(message) {
     if (!navigator.geolocation) {
       return alert('Oh no you can\'t do cool geolocation stuff..😩');
     }
+
+    locationButton.disabled = true;
+    locationButton.innerText = 'Loading...';
+
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
+
+    locationButton.disabled = false;
+    locationButton.innerText = 'Send Location';
+
       socket.emit('createLocationMessage',{
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
@@ -61,6 +68,7 @@ socket.on('newLocationMessage', function(message) {
     }, () => {
 
       alert('Dude things are not going well... FML!');
+     getElement('#send-location').disabled = false;
 
     });
   });
